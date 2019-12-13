@@ -37,9 +37,13 @@
                   <div class="border p-1 m-1">
                       <form action = "/groups" method = post>
                           <p>
-                          {{row.code}}
-                            <button name="del" type="submit" class="mh-100 del" value="{{row.code}}">Delete</button>
-                            <button name="edit" type="submit" class="mh-100 edit" value="{{row.code}}">Edit</button>
+                          {{
+                              row.name_groups,
+                              row.name_faculty,
+                              row.count_student
+                          }}
+                            <button name="del" type="submit" class="mh-100 del" value="{{row.name_groups}}">Delete</button>
+                            <button name="edit" type="submit" class="mh-100 edit" value="{{row.name_groups}}">Edit</button>
                           </p>
                       </form>
                   </div>
@@ -52,7 +56,9 @@
            <legend>Add a Group</legend>
            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
               <div>
-                  {{ form.code.label }}      {{ form.code }}
+                  {{ form.name_groups.label }}      {{ form.name_groups }}
+                  {{ form.name_faculty.label }}      {{ form.name_faculty }}
+                  {{ form.count_student.label }}      {{ form.count_student }}
               </div>
 
              {{ form.submit }}

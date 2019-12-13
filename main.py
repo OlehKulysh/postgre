@@ -197,21 +197,21 @@ def dashboard():
         if len(last_char) > 1:
             return redirect('/dashboard')
 
-    select_result_raw = Groups.query.filter_by().all()
+    select_result_raw = QuestionTeacher.query.filter_by().all()
     if last_char is not None and last_char != "":
-        select_result = [select_result_row.code for select_result_row in select_result_raw
-                         if select_result_row.code[-1] == last_char]
+        select_result = [select_result_row.teacher_passport_number for select_result_row in select_result_raw
+                         if select_result_row.teacher_passport_number[-1] == last_char]
     else:
-        select_result = [select_result_row.code for select_result_row in select_result_raw]
+        select_result = [select_result_row.teacher_passport_number for select_result_row in select_result_raw]
 
-    codes_starts_result = list(map(lambda s: s[:2], select_result))
-    codes = list(set(codes_starts_result))
-    counting_stars = [0] * len(codes)
+    teacher_passport_number_starts_result = list(map(lambda s: s[:2], select_result))
+    teacher_passport_numbers = list(set(teacher_passport_number_starts_result))
+    counting_stars = [0] * len(teacher_passport_numbers)
 
-    for no_more_counting_dollars in codes_starts_result:
-        counting_stars[codes.index(no_more_counting_dollars[:2])] += 1
+    for no_more_counting_dollars in teacher_passport_number_starts_result:
+        counting_stars[teacher_passport_numbers.index(no_more_counting_dollars[:2])] += 1
 
-    bar, pie = go.Bar(x=codes, y=counting_stars, marker=dict(color='rgb(122, 122, 122)')), go.Pie(labels=codes, values=counting_stars)
+    bar, pie = go.Bar(x=teacher_passport_numbers, y=counting_stars, marker=dict(color='rgb(122, 122, 122)')), go.Pie(labels=teacher_passport_numbers, values=counting_stars)
 
     data1, data2 = [bar], [pie]
     ids = ["1", "2"]

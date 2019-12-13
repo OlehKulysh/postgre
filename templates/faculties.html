@@ -37,9 +37,11 @@
                   <div class="border p-1 m-1">
                       <form action = "/faculties" method = post>
                           <p>
-                          {{ row.name_faculty }}
-                          {{row.students_count}}
-                          {{row.teachers_count}}
+                          {{
+                              row.name_faculty,
+                              row.students_count,
+                              row.teachers_count
+                          }}
                             <button name="del" type="submit" class="mh-100 del" value="{{row.name_faculty}}">Delete</button>
                             <button name="edit" type="submit" class="mh-100 edit" value="{{row.name_faculty}}">Edit</button>
                           </p>
@@ -54,7 +56,9 @@
            <legend>Add a faculties</legend>
            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
               <div>
-                  {{ form.name_faculty.label }}      {{ form.name_faculty }}
+                  {{  form.name_faculty.label  }}    {{  form.name_faculty  }}
+                  {{ form.students_count.label }}    {{ form.students_count }}
+                  {{ form.teachers_count.label }}    {{ form.teachers_count }}
               </div>
 
              {{ form.submit }}

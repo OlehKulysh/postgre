@@ -2,7 +2,9 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///db_name'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'jdbc:postgresql://localhost:5432/postgres'
+
+
 
 db = SQLAlchemy(app)
 
@@ -28,10 +30,10 @@ class Faculties(db.Model):
 
 class Teachers(db.Model):
     __tablename__ = 'TEACHERS'
-    passport_number = db.Column('PASSPORT_NUMBER', db.String(11), primary_key=True)
-    full_name = db.Column('FULL_NAME', db.String(50))
-    salary = db.Column('SALARY', db.Integer)
-    faculty = db.Column('FACULTY', db.String(11), db.ForeignKey('faculties.NAME_FACULTY'), primary_key=True)
+    passport_number = db.Column('TEACHERS.PASSPORT_NUMBER', db.String(11), primary_key=True)
+    full_name = db.Column('TEACHERS.FULL_NAME', db.String(50))
+    salary = db.Column('TEACHERS.SALARY', db.Integer)
+    faculty = db.Column('TEACHERS.FACULTY', db.String(11), db.ForeignKey('faculties.NAME_FACULTY'), primary_key=True)
 
     audiencesEndLesson = db.relationship('AudiencesEndLesson', backref='TEACHERS', lazy='dynamic')
     questionTeacher = db.relationship('QuestionTeacher', backref='TEACHERS', lazy='dynamic')
