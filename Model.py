@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'jdbc:postgresql://localhost:5432/postgres'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://xwfapmnindrbff:ae410fa833a9a3c0f01be50241767e8d4df419783c8e5b7df2839728833713f5@ec2-174-129-255-15.compute-1.amazonaws.com:5432/d9rdtou681chgm'
 
 
 
